@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block body-block %}
+<h1>This Is Registration Page</h1>
+{% if registerd %}
+<h2>Thanks For Your Registration</h2>
+
+{% else %}
+<h3>FillUp This Form</h3>
+<form method="post">
+{% csrf_token %}
+{{ user_form.as_p }}
+{{ user_profile.as_p }}
+<input type="submit" value="Register" class="submit_btn">
+</form>
+{% endif %}
+{% endblock  %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>This Landing Page</title>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="{% url 'Index_page' %}">Home</a></li>
+        <li><a href="{% url 'basic_app:register_page' %}">Registry</a></li>
+        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+    </ul>
+    </nav>
+    {% block body-block %}
+    <h1>Welcome To The Product Registry Page</h1>
+    <h3>If You Have Accont Please LogIn, If Not Create <a href="{% url 'basic_app:register_page' %}">One</a></h3>
+    {% endblock  %}
+
+
+</body>
+</html>
