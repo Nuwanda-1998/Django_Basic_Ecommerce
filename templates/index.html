@@ -13,11 +13,20 @@
         <li><a href="{% url 'Index_page' %}">Home</a></li>
         <li><a href="{% url 'basic_app:register_page' %}">Registry</a></li>
         <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'basic_app:logout' %}">LogOut</a></li>
+        {% else %}
+        <li><a href="{% url 'basic_app:login' %}">LogIn</a></li>
+        {% endif %}
     </ul>
     </nav>
     {% block body-block %}
+    {% if request.user.is_authenticated %}
+        <h1>Now You Are Signed In Dear {{ request.user.username  }}</h1>
+        {% else %}
     <h1>Welcome To The Product Registry Page</h1>
     <h3>If You Have Accont Please LogIn, If Not Create <a href="{% url 'basic_app:register_page' %}">One</a></h3>
+    {% endif %}
     {% endblock  %}
 
 

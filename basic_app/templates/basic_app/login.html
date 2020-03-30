@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!-- {% extends 'index.html' %}
+{% block body-block %} -->
+<h1>Login HERE:</h1>
+<!-- <form action="{% url 'basic_app:login' %}" method="POST">
+    {% csrf_token %}
+    <label for="username">UserName</label>
+    <input type="text" placeholder="UserName" name="username">
+    <label for="password">Password</label>
+    <input type="password" placeholder="PassWord" name="password">
+    <input type="submit" value="Submit Here">
+</form> -->
+<form action="{% url 'basic_app:login' %}" method='POST'>
+    {% csrf_token %}
+    <label for="username">UserName: </label>
+    <input type="text" name="username" placeholder="Enter UserName">
+    <label for="password">PassWord: </label>
+    <input type="password" name="password">
+    <input type="submit" value="LogIn">
+    </form>
+<!-- {% endblock  %} -->

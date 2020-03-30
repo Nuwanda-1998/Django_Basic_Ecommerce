@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import UserForm, UserProfileInfoForm
+from django.shortcuts import redirect
 
 
 from django.contrib.auth import login, logout, authenticate
@@ -16,6 +17,10 @@ class Index(TemplateView):
     template_name = 'index.html'
 
 
+class Invalid_p(TemplateView):
+   template_name = 'invalid_page.html'
+
+
 
 
 def registration(request):
@@ -28,6 +33,7 @@ def registration(request):
         if user_form.is_valid() and user_profile.is_valid():
             user = user_form.save()
             user.set_password(user.password)
+            user.save()
 
             profile = user_profile.save(commit= False)
             profile.user = user
@@ -44,3 +50,24 @@ def registration(request):
     return render(request, 'registration.html', context={'registerd':registerd, 'user_form':user_form, 'user_profile':user_profile})
 
 
+def Login_View(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        print(user)
+        print('username: {}, password: {}'.format(username, password))
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect(reverse('Index_page'))
+            # return HttpResponseRedirect('/basic_app/login_page/')
+        else:
+            return HttpResponseRedirect(reverse('basic_app:Invalid'))
+            # return redirect('/basic_app/login_failed/')  it worked
+    else:
+        return render(request, 'basic_app/login.html')
+
+@login_required
+def LogOut_View(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('Index_page'))
