@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+
+{% block body-block %}
+<h1>ADD your Product Here:</h1>
+
+    <form action="" method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ Prdct_form.as_p }}
+        <input type="submit" value="Submit Me">
+    </form>
+    {% endblock  %}

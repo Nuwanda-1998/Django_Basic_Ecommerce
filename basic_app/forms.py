@@ -15,3 +15,10 @@ class UserProfileInfoForm(forms.ModelForm):
         model = UserProfileInfo
         fields = ("user_job", "national_id")
 
+class ProductForm(forms.ModelForm):
+    # category = forms.ModelChoiceField(queryset= PCategory.order_by('cat_name'))
+    category = forms.ModelChoiceField(queryset= PCategory.objects.all())
+    product_image = forms.ImageField()
+    class Meta:
+        model = Products
+        fields = ("category", "product_name", "product_image")

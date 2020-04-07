@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import UserForm, UserProfileInfoForm
+from .forms import UserForm, UserProfileInfoForm, ProductForm
 from django.shortcuts import redirect
 
 
@@ -20,7 +20,8 @@ class Index(TemplateView):
 class Invalid_p(TemplateView):
    template_name = 'invalid_page.html'
 
-
+class Succes_Product_page(TemplateView):
+    template_name = 'basic_app/product_succes_adding.html'
 
 
 def registration(request):
@@ -71,3 +72,17 @@ def Login_View(request):
 def LogOut_View(request):
     logout(request)
     return HttpResponseRedirect(reverse('Index_page'))
+
+@login_required
+def Product_Adder_View(request):
+    
+    if request.method == 'POST':
+        Prdct_form = ProductForm(request.POST, request.FILES)
+        if Prdct_form.is_valid():
+            Prdct_form.save()
+            return HttpResponseRedirect(reverse('basic_app:Product_added'))
+        else:
+            raise('Not Valid Form')
+    else:
+        Prdct_form = ProductForm()
+    return render(request, 'basic_app/product_adding.html', context={'Prdct_form':Prdct_form})
