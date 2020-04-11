@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'^login_failed/', views.Invalid_p.as_view(), name='Invalid'),
     url(r'^product_adding/', views.Product_Adder_View, name='product_add'),
     url(r'6success_product_adding', views.Succes_Product_page.as_view(), name='Product_added'),
+    # url(r'^products_page/', views.Products_Display.as_view(), name='products_page'),
+    url(r'^$', views.Products_Display.as_view(), name='products_page'),
+    url(r'^(?P<pk>\d+)/$', views.Products_Detail.as_view(), name='products_detail_page'),
 ]

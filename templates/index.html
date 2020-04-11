@@ -13,6 +13,7 @@
         <li><a href="{% url 'Index_page' %}">Home</a></li>
         <li><a href="{% url 'basic_app:register_page' %}">Registry</a></li>
         <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        <li><a href="{% url 'basic_app:products_page' %}">Products</a></li>
         {% if request.user.is_authenticated %}
         <li><a href="{% url 'basic_app:product_add' %}">Add Your Product</a></li>
         <li><a href="{% url 'basic_app:logout' %}">LogOut</a></li>

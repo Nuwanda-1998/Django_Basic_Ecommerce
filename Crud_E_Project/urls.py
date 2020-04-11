@@ -18,8 +18,12 @@ from django.contrib import admin
 from basic_app import urls
 from basic_app import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.Index.as_view(), name='Index_page'),
     url(r'^basic_app/', include('basic_app.urls')),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

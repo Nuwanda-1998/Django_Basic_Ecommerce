@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+
+
+
+{% block body-block %}
+    <h1>This is Your Product:</h1>
+    {% for product in product_deatail.products.all %}
+    <h3>Category: {{ product.category }}</h3>
+    <h3>name: {{ product.product_name }}</h3>
+    <!-- <h3>Picture: {{ product.product_image }}</h3> -->
+    <!-- <td><img src="{{ product.product_image }}" /></td> -->
+    <img src="{{ product.product_image }}" alt="Product_Page">
+    
+    {% endfor %}
+
+    {% endblock  %}

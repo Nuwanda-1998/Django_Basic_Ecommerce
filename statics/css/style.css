@@ -53,3 +53,13 @@ h1{
     color: wheat;
     font-size: 550%;
 }
+
+h4{
+    color: tomato;
+    font-size: 200%;
+    padding: 70px;
+}
+img{
+    width: 100px;
+    height: 150px;
+}

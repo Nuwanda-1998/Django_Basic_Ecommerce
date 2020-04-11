@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import UserForm, UserProfileInfoForm, ProductForm
 from django.shortcuts import redirect
+from .models import PCategory, Products
 
 
 from django.contrib.auth import login, logout, authenticate
@@ -86,3 +87,12 @@ def Product_Adder_View(request):
     else:
         Prdct_form = ProductForm()
     return render(request, 'basic_app/product_adding.html', context={'Prdct_form':Prdct_form})
+
+class Products_Display(ListView):
+    context_object_name = 'Categories'
+    template_name = 'basic_app/Product_page.html'
+    model = PCategory
+class Products_Detail(DetailView):
+    context_object_name = 'product_deatail'
+    template_name = 'basic_app/Product_detail.html'
+    model = PCategory

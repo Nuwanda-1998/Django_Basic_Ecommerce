@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+
+
+
+{% block body-block %}
+    <h1>Here is the list Of All Products:</h1>
+    {% for category in Categories %}
+    <ol>
+        <h4><li><a href="{{ category.id }}/">{{ category.cat_name }}</a></li></h4>
+    </ol>
+    {% endfor %}
+
+    {% endblock  %}
